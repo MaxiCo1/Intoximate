@@ -6,8 +6,8 @@ import Home from "./componentes/Home.jsx";
 export default function App() {
   return (
     <View style={styles.container}>
-      <Home></Home>
-      <StatusBar style="auto" />
+      <Home />
+      <StatusBar style="light" />
     </View>
   );
 }
@@ -19,5 +19,5 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "#212121",
-  },
+  }
 });
