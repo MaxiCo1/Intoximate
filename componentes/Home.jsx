@@ -5,12 +5,20 @@ import BorderGradient from "./BorderGradient.jsx";
 
 const Main = () => {
   return (
-    <View style={{ width: "80%", height: "85%" }}>
+    <View style={{ width: "80%" /*, height: "85%"*/ }}>
       <View style={containerTop}>
-        <BorderGradient style={[styles.containerTop]} type="top" text="Juegos" />
+        <BorderGradient
+          style={[styles.containerTop]}
+          type="top"
+          text="Juegos"
+        />
       </View>
       <View style={containerBottom}>
-        <BorderGradient style={[styles.containerBottom]} type="bottom" text="Tragos" />
+        <BorderGradient
+          style={[styles.containerBottom]}
+          type="bottom"
+          text="Tragos"
+        />
       </View>
     </View>
   );
