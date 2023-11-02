@@ -1,6 +1,7 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
+import { Link } from "expo-router";
 
 const BorderGradient = ({ text, type }) => {
   return (
@@ -22,7 +23,11 @@ const BorderGradient = ({ text, type }) => {
             type == "top" ? styles.top : styles.bottom,
           ]}
         >
-          <Text style={styles.buttonText}>{text}</Text>
+          <Link href={"/HomeDrinks.jsx"} asChild>
+            <Pressable>
+              <Text style={styles.buttonText}>{text}</Text>
+            </Pressable>
+          </Link>
         </View>
       </LinearGradient>
     </>
