@@ -1,23 +1,29 @@
 import React from "react";
-import { StyleSheet, Text, View, Image } from "react-native";
-import { LinearGradient } from "expo-linear-gradient";
+import { StyleSheet, Text, View } from "react-native";
+import { Link } from "expo-router";
+
+import { Image } from "expo-image";
 
 const CardDrinks = ({ drink }) => {
-  const { strDrink, strDrinkThumb } = drink;
+  const { idDrink, strDrink, strDrinkThumb } = drink;
   return (
     <>
-      <View style={[styles.Container]}>
+      <Link
+        href={{ pathname: "/SingleCocktail", params: { id: idDrink } }}
+        style={[styles.Container]}
+      >
         <Image style={[styles.image]} source={strDrinkThumb} />
         <Text style={styles.buttonText}>{strDrink}</Text>
-      </View>
+      </Link>
     </>
   );
 };
 
 const styles = StyleSheet.create({
   Container: {
-    height: 50,
-    width: 100,
+    height: "40%",
+    width: "35%",
+    textAlign: "center",
   },
   buttonText: {
     color: "#FBFCF8",

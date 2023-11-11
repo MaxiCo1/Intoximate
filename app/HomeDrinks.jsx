@@ -1,6 +1,8 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { StyleSheet, Text, View } from "react-native";
+import { SearchBar } from "@rneui/themed";
+
 import CardDrinks from "./componentes/CardDrinks.jsx";
 import Recomended from "./componentes/RecomendedSlider.jsx";
 
@@ -54,15 +56,39 @@ const HomeDrinks = () => {
         width: "100%",
       }}
     >
-      <View style={styles.containerRecomended}>
-        {RecomendedData.map((drink, index) => {
-          return <CardDrinks key={index} drink={drink} />;
-        })}
-      </View>
-      <View style={styles.containerDrinks}>
-        {InitialData.map((drink, index) => {
-          return <CardDrinks key={index} drink={drink} />;
-        })}
+      <View
+        style={{
+          backgroundColor: "#3B3059",
+          height: "95%",
+          marginTop: "10%",
+          borderTopEndRadius: 50,
+          borderTopStartRadius: 50,
+          alignItems: "center",
+        }}
+      >
+        <View>
+          <Text style={styles.title}>Tragos recomendados</Text>
+        </View>
+
+        <SearchBar
+          platform="ios"
+          placeholder="Buscar"
+          containerStyle={{
+            width: "90%",
+            backgroundColor: "transparent",
+          }}
+          inputContainerStyle={{
+            borderRadius: 22,
+            backgroundColor: "#494163",
+            color: "#EBEBF5",
+          }}
+        />
+        <View style={styles.containerRecomended}></View>
+        <View style={styles.containerDrinks}>
+          {InitialData.map((drink, index) => {
+            return <CardDrinks key={index} drink={drink} />;
+          })}
+        </View>
       </View>
     </View>
   );
@@ -71,16 +97,16 @@ const HomeDrinks = () => {
 const styles = StyleSheet.create({
   containerDrinks: {
     margin: "5%",
-    height: "40%",
-    display: "flex",
-    flex: 1,
+    height: "50%",
     justifyContent: "space-around",
     flexWrap: "wrap",
     flexDirection: "row",
   },
-  text: {
+  containerRecomended: { height: "40%" },
+  title: {
     color: "#FBFCF8",
     fontSize: 24,
+    marginTop: "5%",
   },
 });
 export default HomeDrinks;
