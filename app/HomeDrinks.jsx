@@ -1,14 +1,15 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { SearchBar } from "@rneui/themed";
 
+import Search from "./componentes/SearchBar.jsx";
 import CardDrinks from "./componentes/CardDrinks.jsx";
 import Recomended from "./componentes/RecomendedSlider.jsx";
 
 const url = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=";
 
-const HomeDrinks = () => {
+const HomeDrinks = ({ history }) => {
+  console.log(history);
   const [InitialData, setInitialData] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -69,20 +70,7 @@ const HomeDrinks = () => {
         <View>
           <Text style={styles.title}>Tragos recomendados</Text>
         </View>
-
-        <SearchBar
-          platform="ios"
-          placeholder="Buscar"
-          containerStyle={{
-            width: "90%",
-            backgroundColor: "transparent",
-          }}
-          inputContainerStyle={{
-            borderRadius: 22,
-            backgroundColor: "#494163",
-            color: "#EBEBF5",
-          }}
-        />
+        <Search history={history} />
         <View style={styles.containerRecomended}></View>
         <View style={styles.containerDrinks}>
           {InitialData.map((drink, index) => {
