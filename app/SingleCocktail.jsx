@@ -89,41 +89,46 @@ const SingleCocktail = () => {
     console.log(arrClean);
   }
   console.log(arrClean);
-  return (
-    <View style={{ backgroundColor: "#212121", width: "100%", height: "100%" }}>
-      <View style={styles.containerViolet}>
-        <Text style={styles.tituloSeccion}>{strDrink}</Text>
-        <View style={styles.imgContainer}>
-          <LinearGradient
-            colors={["#714FA1", "#79D9D4", "#EC5B75", "#79D9D4", "#714FA1"]}
-            start={{ x: 0, y: 0 }}
-            end={{ x: 1, y: 1 }}
-            locations={[0, 0.25, 0.5, 0.75, 1]} // Ajusta las ubicaciones para lograr el efecto deseado
-            style={[styles.linearGradient, styles.glow]}
-          >
-            <View style={[styles.innerContainer]}>
-              <Image style={[styles.image]} source={strDrinkThumb} />
-            </View>
-          </LinearGradient>
-        </View>
-        <View style={styles.container}>
-          <Text style={styles.titulo}>Ingredientes</Text>
-          {arrClean.map((inst, index) => {
-            return (
-              <Text style={styles.texto} key={index}>
-                {inst}
-              </Text>
-            );
-          })}
-        </View>
-        <View style={styles.container}>
-          <Text style={styles.titulo}>Instrucciones</Text>
-          <Text style={styles.texto}>{strInstructions}</Text>
+  if (arrClean != null) {
+    return (
+      <View
+        style={{ backgroundColor: "#212121", width: "100%", height: "100%" }}
+      >
+        <View style={styles.containerViolet}>
+          <Text style={styles.tituloSeccion}>{strDrink}</Text>
+          <View style={styles.imgContainer}>
+            <LinearGradient
+              colors={["#714FA1", "#79D9D4", "#EC5B75", "#79D9D4", "#714FA1"]}
+              start={{ x: 0, y: 0 }}
+              end={{ x: 1, y: 1 }}
+              locations={[0, 0.25, 0.5, 0.75, 1]} // Ajusta las ubicaciones para lograr el efecto deseado
+              style={[styles.linearGradient, styles.glow]}
+            >
+              <View style={[styles.innerContainer]}>
+                <Image style={[styles.image]} source={strDrinkThumb} />
+              </View>
+            </LinearGradient>
+          </View>
+          <View style={styles.container}>
+            <Text style={styles.titulo}>Ingredientes</Text>
+            {arrClean.map((inst, index) => {
+              return (
+                <Text style={styles.texto} key={index}>
+                  {inst}
+                </Text>
+              );
+            })}
+          </View>
+          <View style={styles.container}>
+            <Text style={styles.titulo}>Instrucciones</Text>
+            <Text style={styles.texto}>{strInstructions}</Text>
+          </View>
         </View>
       </View>
-    </View>
-  );
+    );
+  }
 };
+
 const styles = StyleSheet.create({
   linearGradient: {
     width: "85%",

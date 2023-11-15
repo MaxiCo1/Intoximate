@@ -5,7 +5,6 @@ import { SearchBar } from "@rneui/themed";
 const url = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=";
 
 const Search = ({ history }) => {
-  console.log(history);
   const [search, setSearch] = useState("");
   const [searchData, setSearchData] = useState([]);
 
@@ -18,12 +17,13 @@ const Search = ({ history }) => {
       const response = await fetch(url + search);
       const searchData = await response.json();
       setSearchData(searchData.drinks);
-      history.push("/search-results", { searchData: searchData.drinks });
+
+      //history.push("/search-results", { searchData: searchData.drinks });
     } catch (error) {
       console.log(error);
     }
   };
-
+  console.log(searchData);
   return (
     <SearchBar
       platform="ios"

@@ -9,7 +9,6 @@ import Recomended from "./componentes/RecomendedSlider.jsx";
 const url = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=";
 
 const HomeDrinks = ({ history }) => {
-  console.log(history);
   const [InitialData, setInitialData] = useState([]);
   const [loading, setLoading] = useState(false);
 
