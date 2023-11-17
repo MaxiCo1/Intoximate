@@ -6,7 +6,6 @@ import { Link } from "expo-router";
 import Search from "./componentes/SearchBar.jsx";
 import CardDrinks from "./componentes/CardDrinks.jsx";
 import Recomended from "./componentes/RecomendedSlider.jsx";
-import { UserProvider } from "./UserContext"; // Importa el UserProvider
 
 const url = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=";
 

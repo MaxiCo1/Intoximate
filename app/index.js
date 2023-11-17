@@ -1,7 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 import Home from "./componentes/Home.jsx";
-//import { UserProvider } from "./UserContext.js";
 
 export default function Page() {
   return (
