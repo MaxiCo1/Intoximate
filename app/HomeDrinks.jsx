@@ -2,15 +2,16 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { StyleSheet, Text, View } from "react-native";
 
+import { Link } from "expo-router";
 import Search from "./componentes/SearchBar.jsx";
 import CardDrinks from "./componentes/CardDrinks.jsx";
 import Recomended from "./componentes/RecomendedSlider.jsx";
+import { UserProvider } from "./UserContext"; // Importa el UserProvider
 
 const url = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=";
 
-const HomeDrinks = ({ history }) => {
+const HomeDrinks = () => {
   const [InitialData, setInitialData] = useState([]);
-  const [loading, setLoading] = useState(false);
 
   const [RecomendedData, setRecomendedData] = useState([]);
 
@@ -19,7 +20,7 @@ const HomeDrinks = ({ history }) => {
     try {
       const response = await fetch(url + "wine");
       const InitialData = await response.json();
-      setLoading(false);
+
       setInitialData(InitialData.drinks);
     } catch (error) {
       console.log(error);
@@ -27,7 +28,6 @@ const HomeDrinks = ({ history }) => {
   };
 
   useEffect(() => {
-    setLoading(true);
     getInitialData();
   }, []);
 
@@ -36,7 +36,7 @@ const HomeDrinks = ({ history }) => {
     try {
       const response = await fetch(url + "vodka");
       const RecomendedData = await response.json();
-      setLoading(false);
+
       setRecomendedData(RecomendedData.drinks);
     } catch (error) {
       console.log(error);
@@ -44,7 +44,6 @@ const HomeDrinks = ({ history }) => {
   };
 
   useEffect(() => {
-    setLoading(true);
     getRecomendedData();
   }, []);
 
@@ -69,7 +68,9 @@ const HomeDrinks = ({ history }) => {
         <View>
           <Text style={styles.title}>Tragos recomendados</Text>
         </View>
-        <Search history={history} />
+
+        <Search />
+
         <View style={styles.containerRecomended}></View>
         <View style={styles.containerDrinks}>
           {InitialData.map((drink, index) => {
