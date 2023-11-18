@@ -8,7 +8,7 @@ import { router } from "expo-router";
 const url = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
 
 const RandomButton = () => {
-  //const id = 0;
+  let id = 0;
   const [RandomData, setRandomData] = useState([]);
 
   const getRandomData = async () => {
@@ -19,28 +19,23 @@ const RandomButton = () => {
     } catch (error) {
       console.log(error);
     }
-  };
-  console.log(RandomData);
-  const execute = (id) => {
-    if (RandomData.length > 0) {
-      const { idDrink } = RandomData[0];
-      id = idDrink;
-    }
-    console.log(id);
-    router.push({
-      pathname: "/SingleCocktail",
-      params: { id: id },
-    });
-  };
 
-  const route = () => {
-    getRandomData();
-    execute();
-    //console.log(RandomData);
+    if (RandomData.length > 0) {
+      id = RandomData[0].idDrink;
+      //console.log(RandomData);
+      //console.log(id);
+
+      router.push({
+        pathname: "/SingleCocktail",
+        params: { id: id },
+      });
+    }
   };
+  //console.log(id);
+  console.log(RandomData);
 
   return (
-    <Pressable onPress={route} style={[styles.Container]}>
+    <Pressable onPress={getRandomData} style={[styles.Container]}>
       <LinearGradient
         colors={["#714FA1", "#79D9D4", "#EC5B75", "#79D9D4", "#714FA1"]}
         start={{ x: 0, y: 0 }}
