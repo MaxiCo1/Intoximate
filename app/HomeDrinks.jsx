@@ -65,7 +65,7 @@ const HomeDrinks = () => {
         }}
       >
         <View>
-          <Text style={styles.title}>Tragos recomendados</Text>
+          <Text style={styles.title}>Tragos</Text>
         </View>
 
         <Search />

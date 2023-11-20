@@ -3,7 +3,7 @@ import { Pressable, StyleSheet, Text, View } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { Link } from "expo-router";
 
-const BorderGradient = ({ text, type }) => {
+const BorderGradient = ({ text, type, redirect }) => {
   return (
     <>
       <LinearGradient
@@ -23,7 +23,7 @@ const BorderGradient = ({ text, type }) => {
             type == "top" ? styles.top : styles.bottom,
           ]}
         >
-          <Link href={"/HomeDrinks"} asChild>
+          <Link href={redirect} asChild>
             <Pressable>
               <Text style={styles.buttonText}>{text}</Text>
             </Pressable>

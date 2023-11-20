@@ -7,10 +7,10 @@ const Main = () => {
   return (
     <View style={{ width: "80%" /*, height: "85%"*/ }}>
       <View style={containerTop}>
-        <BorderGradient type="top" text="Juegos" />
+        <BorderGradient type="top" text="Juegos" redirect="/HomeGames" />
       </View>
       <View style={containerBottom}>
-        <BorderGradient type="bottom" text="Tragos" />
+        <BorderGradient type="bottom" text="Tragos" redirect="/HomeDrinks" />
       </View>
     </View>
   );
