@@ -3,6 +3,7 @@ import React from "react";
 import { useState } from "react";
 import { LinearGradient } from "expo-linear-gradient";
 import games from "./games.json";
+import BackButton from "./componentes/BackButton";
 
 const Juego1 = () => {
   const [preguntaActual, setPreguntaActual] = useState("Clickeá YO NUNCA NUNCA para jugar");
@@ -15,6 +16,7 @@ const Juego1 = () => {
   };
   return (
     <View style={{ backgroundColor: "#212121", width: "100%", height: "100%" }}>
+      <BackButton />
       <View style={styles.containerViolet}>
         <Text style={styles.tituloSeccion}>Yo Nunca Nunca</Text>
         <View style={styles.imgContainer}>

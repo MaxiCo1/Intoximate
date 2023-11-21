@@ -2,6 +2,7 @@ import { View, Text, StyleSheet } from "react-native";
 import React from "react";
 
 import GameCard from "./componentes/GameCard";
+import BackButton from "./componentes/BackButton";
 
 const Homegames = () => {
   return (
@@ -12,6 +13,7 @@ const Homegames = () => {
         width: "100%",
       }}
     >
+      <BackButton />
       <View
         style={{
           backgroundColor: "#3B3059",

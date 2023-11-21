@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { useLocalSearchParams } from "expo-router";
 import { LinearGradient } from "expo-linear-gradient";
+import BackButton from "./componentes/BackButton";
 
 import { Image } from "expo-image";
 
@@ -91,9 +92,11 @@ const SingleCocktail = () => {
   console.log(arrClean);
   if (arrClean != null) {
     return (
+      
       <View
         style={{ backgroundColor: "#212121", width: "100%", height: "100%" }}
       >
+        <BackButton />
         <View style={styles.containerViolet}>
           <Text style={styles.tituloSeccion}>{strDrink}</Text>
           <View style={styles.imgContainer}>

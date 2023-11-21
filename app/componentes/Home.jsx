@@ -2,6 +2,7 @@ import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { useFonts } from "expo-font";
 import BorderGradient from "./BorderGradient.jsx";
+import BackButton from "./BackButton.jsx";
 
 const Main = () => {
   return (

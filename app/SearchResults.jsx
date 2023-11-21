@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { SearchBar } from "@rneui/themed";
 import { useLocalSearchParams } from "expo-router";
+import BackButton from "./componentes/BackButton";
 
 import CardDrinks from "./componentes/CardDrinks";
 import RandomButton from "./componentes/RandomButton";
@@ -53,6 +54,7 @@ const SearchResults = () => {
         width: "100%",
       }}
     >
+      <BackButton />
       <View
         style={{
           backgroundColor: "#3B3059",

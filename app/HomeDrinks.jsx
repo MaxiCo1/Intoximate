@@ -6,6 +6,7 @@ import { Link } from "expo-router";
 import Search from "./componentes/SearchBar.jsx";
 import CardDrinks from "./componentes/CardDrinks.jsx";
 import Recomended from "./componentes/RecomendedSlider.jsx";
+import BackButton from "./componentes/BackButton.jsx";
 
 const url = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=";
 
@@ -54,6 +55,7 @@ const HomeDrinks = () => {
         width: "100%",
       }}
     >
+      <BackButton />
       <View
         style={{
           backgroundColor: "#3B3059",
