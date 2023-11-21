@@ -28,8 +28,8 @@ const Homegames = () => {
 
         <View style={styles.containerRecomended}></View>
         <View style={styles.containerGames}>
-          <GameCard redirect={"/Juego1"} text={"Juego 1"} />
-          <GameCard redirect={"/Juego2"} text={"Juego 2"} />
+          <GameCard redirect={"/Juego1"} text={"Yo Nunca Nunca"} />
+          <GameCard redirect={"/Juego2"} text={"¿Qué Preferís?"} />
         </View>
       </View>
     </View>
