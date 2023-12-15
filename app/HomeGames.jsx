@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet } from "react-native";
+import { ScrollView, View, Text, StyleSheet } from "react-native";
 import React from "react";
 
 import GameCard from "./componentes/GameCard";
@@ -11,36 +11,38 @@ const Homegames = () => {
         backgroundColor: "#212121",
         height: "100%",
         width: "100%",
+        flex: 1,
       }}
     >
       <BackButton />
-      <View
-        style={{
-          backgroundColor: "#3B3059",
-          height: "95%",
-          marginTop: "10%",
-          borderTopEndRadius: 50,
-          borderTopStartRadius: 50,
-          alignItems: "center",
-        }}
-      >
-        <View>
-          <Text style={styles.title}>Juegos</Text>
-        </View>
+      <ScrollView>
+        <View
+          style={{
+            backgroundColor: "#3B3059",
+            height: "460%",
+            borderTopEndRadius: 50,
+            borderTopStartRadius: 50,
+            alignItems: "center",
+          }}
+        >
+          <View>
+            <Text style={styles.title}>Juegos</Text>
+          </View>
 
-        <View style={styles.containerRecomended}></View>
-        <View style={styles.containerGames}>
-          <GameCard redirect={"/Juego1"} text={"Yo Nunca Nunca"} />
-          <GameCard redirect={"/Juego2"} text={"¿Qué Preferís?"} />
+          <View style={styles.containerRecomended}></View>
+          <View style={styles.containerGames}>
+            <GameCard redirect={"/Juego1"} text={"Yo Nunca Nunca"} />
+            <GameCard redirect={"/Juego2"} text={"¿Qué Preferís?"} />
+          </View>
         </View>
-      </View>
+      </ScrollView>
     </View>
   );
 };
+
 const styles = StyleSheet.create({
   containerGames: {
-    margin: "5%",
-    height: "50%",
+    height: "100%",
     justifyContent: "space-around",
     flexWrap: "wrap",
     flexDirection: "row",
@@ -49,7 +51,7 @@ const styles = StyleSheet.create({
   title: {
     color: "#FBFCF8",
     fontSize: 24,
-    marginTop: "5%",
+    marginTop: 20,
   },
 });
 

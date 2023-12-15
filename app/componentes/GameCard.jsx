@@ -41,14 +41,16 @@ const styles = StyleSheet.create({
   buttonText: {
     color: "#FBFCF8",
     //fontFamily: "Roboto-Regular",
-    fontSize: 14,
+    fontSize: 16,
     textAlign: "center",
-    margin: 10,
+    margin: 14,
     backgroundColor: "transparent",
   },
   Container: {
     width: "100%",
     alignItems: "center",
+    justifyContent: "center",
+    marginBottom: "5%",
   },
 });
 export default GameCard;

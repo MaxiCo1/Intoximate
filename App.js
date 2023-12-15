@@ -8,19 +8,10 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Home />
-      <StatusBar style="light" />
     </View>
   );
 }
-/*
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <HomeDrinks />
-      <StatusBar style="light" />
-    </View>
-  );
-}*/
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,

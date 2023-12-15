@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, Button } from "react-native";
+import { ScrollView, View, Text, StyleSheet, Button } from "react-native";
 import React from "react";
 import { useState } from "react";
 import { LinearGradient } from "expo-linear-gradient";
@@ -6,19 +6,30 @@ import games from "./games.json";
 import BackButton from "./componentes/BackButton";
 
 const Juego2 = () => {
-  const [preguntaActual, setPreguntaActual] = useState("Clickeá ¿QUÉ PREFERÍS? para jugar");
+  const [preguntaActual, setPreguntaActual] = useState(
+    "Clickeá ¿QUÉ PREFERÍS? para jugar"
+  );
 
   const obtenerPreguntaAleatoria = () => {
     const preguntasQuePreferis = games.preferirias;
-    const indiceAleatorio = Math.floor(Math.random() * preguntasQuePreferis.length);
+    const indiceAleatorio = Math.floor(
+      Math.random() * preguntasQuePreferis.length
+    );
     const preguntaAleatoria = preguntasQuePreferis[indiceAleatorio];
     setPreguntaActual(preguntaAleatoria);
   };
   return (
-    <View style={{ backgroundColor: "#212121", width: "100%", height: "100%" }}>
+    <View
+      style={{
+        backgroundColor: "#212121",
+        width: "100%",
+        height: "100%",
+        flex: 1,
+      }}
+    >
       <BackButton />
-      <View style={styles.containerViolet}>
-        <Text style={styles.tituloSeccion}>Yo Nunca Nunca</Text>
+      <ScrollView style={styles.container}>
+        <Text style={styles.title}>¿Qué preferís?</Text>
         <View style={styles.imgContainer}>
           <LinearGradient
             colors={["#714FA1", "#79D9D4", "#EC5B75", "#79D9D4", "#714FA1"]}
@@ -32,11 +43,12 @@ const Juego2 = () => {
             </View>
           </LinearGradient>
         </View>
-      </View>
-      <Button style={styles.boton}
-        title="¿QUÉ PREFERÍS?"
-        onPress={obtenerPreguntaAleatoria}
-      />
+        <Button
+          style={styles.boton}
+          title="¿QUÉ PREFERÍS?"
+          onPress={obtenerPreguntaAleatoria}
+        />
+      </ScrollView>
     </View>
   );
 };
@@ -51,38 +63,40 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     flex: 1,
     margin: 3, // <-- Border Width
+    padding: 10,
     backgroundColor: "#212121",
     justifyContent: "center",
   },
 
-  titulo: {
-    fontSize: 20,
-    color: "#EBEBF5",
-    textAlign: "center",
-  },
-  tituloSeccion: {
+  title: {
+    color: "#FBFCF8",
     fontSize: 24,
-    color: "#EBEBF5",
+    margin: 20,
     textAlign: "center",
   },
   texto: {
-    fontSize: 14,
+    fontSize: 30,
     color: "#EBEBF5",
     textAlign: "center",
   },
   image: { width: "100%", height: "100%", borderRadius: 25 },
   imgContainer: {
-    width: "80%",
-    backgroundColor: "#212121",
-    height: "40%",
-    alignItems: "center",
-    display: "flex",
     justifyContent: "center",
+    alignItems: "center",
+    marginLeft: 15,
+    marginRight: 15,
+    marginBottom: 20,
+    backgroundColor: "#212121",
     borderRadius: 25,
+    height: 600,
   },
   container: {
-    width: "90%",
-    alignItems: "left",
+    display: "flex",
+    flexDirection: "column",
+    flex: 1,
+    backgroundColor: "#3B3059",
+    borderTopEndRadius: 50,
+    borderTopStartRadius: 50,
   },
   containerViolet: {
     display: "flex",
@@ -94,8 +108,8 @@ const styles = StyleSheet.create({
     borderTopEndRadius: 50,
     borderTopStartRadius: 50,
     alignItems: "center",
-    position: "relative"
-  }
+    position: "relative",
+  },
 });
 
 export default Juego2;

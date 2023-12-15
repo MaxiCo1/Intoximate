@@ -29,13 +29,13 @@ const Juego1 = () => {
         backgroundColor: "#212121",
         width: "100%",
         height: "100%",
-        flex: 1
+        flex: 1,
       }}
     >
       <BackButton />
       <ScrollView style={styles.container}>
         <SafeAreaView>
-          <Text style={styles.tituloSeccion}>Yo Nunca Nunca</Text>
+          <Text style={styles.title}>Yo Nunca Nunca</Text>
           <View style={styles.imgContainer}>
             <LinearGradient
               colors={["#714FA1", "#79D9D4", "#EC5B75", "#79D9D4", "#714FA1"]}
@@ -70,45 +70,41 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     flex: 1,
     margin: 3, // <-- Border Width
+    padding: 10,
     backgroundColor: "#212121",
     justifyContent: "center",
   },
 
-  titulo: {
-    fontSize: 20,
-    color: "#EBEBF5",
-    textAlign: "center",
-  },
-  tituloSeccion: {
+  title: {
+    color: "#FBFCF8",
     fontSize: 24,
-    color: "#EBEBF5",
+    margin: 20,
     textAlign: "center",
   },
   texto: {
-    fontSize: 14,
+    fontSize: 30,
     color: "#EBEBF5",
     textAlign: "center",
   },
   image: { width: "100%", height: "100%", borderRadius: 25 },
   imgContainer: {
-    width: "80%",
-    backgroundColor: "#212121",
-    height: "40%",
-    alignItems: "center",
-    display: "flex",
     justifyContent: "center",
+    alignItems: "center",
+    marginLeft: 15,
+    marginRight: 15,
+    marginBottom: 20,
+    backgroundColor: "#212121",
     borderRadius: 25,
+    height: 600,
   },
   container: {
     display: "flex",
     flexDirection: "column",
-    height: "100%",
-    width: "100%",
-    flex:1,
+    flex: 1,
     backgroundColor: "#3B3059",
     borderTopEndRadius: 50,
     borderTopStartRadius: 50,
-  }
+  },
 });
 
 export default Juego1;

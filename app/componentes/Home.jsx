@@ -6,7 +6,7 @@ import BackButton from "./BackButton.jsx";
 
 const Main = () => {
   return (
-    <View style={{ width: "80%" /*, height: "85%"*/ }}>
+    <View style={{ width: "90%", height: "95%" }}>
       <View style={containerTop}>
         <BorderGradient type="top" text="Juegos" redirect="/HomeGames" />
       </View>
@@ -22,12 +22,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     borderWidth: 2,
-  },
-  text: {
-    color: "#FBFCF8",
-    //fontFamily: "Roboto-Regular",
-    fontSize: 24,
-  },
+  }
 });
 const containerTop = StyleSheet.compose[(styles.container, styles.top)];
 const containerBottom = StyleSheet.compose[(styles.container, styles.bottom)];

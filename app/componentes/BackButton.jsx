@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from 'react-native';
+import { Button, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 const BackButton = () => {
@@ -9,6 +9,7 @@ const BackButton = () => {
     <Button
       title="< Back"
       onPress={() => navigation.goBack()}
+      style={textAlign = 'left'}
     />
   );
 };
