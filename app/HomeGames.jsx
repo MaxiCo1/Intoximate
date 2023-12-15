@@ -3,6 +3,7 @@ import React from "react";
 
 import GameCard from "./componentes/GameCard";
 import BackButton from "./componentes/BackButton";
+import GameRecomended from "./componentes/GameRecomended";
 
 const Homegames = () => {
   return (
@@ -15,43 +16,46 @@ const Homegames = () => {
       }}
     >
       <BackButton />
-      <ScrollView>
-        <View
-          style={{
-            backgroundColor: "#3B3059",
-            height: "460%",
-            borderTopEndRadius: 50,
-            borderTopStartRadius: 50,
-            alignItems: "center",
-          }}
-        >
-          <View>
-            <Text style={styles.title}>Juegos</Text>
-          </View>
 
-          <View style={styles.containerRecomended}></View>
-          <View style={styles.containerGames}>
-            <GameCard redirect={"/Juego1"} text={"Yo Nunca Nunca"} />
-            <GameCard redirect={"/Juego2"} text={"¿Qué Preferís?"} />
-          </View>
+      <View
+        style={{
+          backgroundColor: "#3B3059",
+          height: "95%",
+          borderTopEndRadius: 50,
+          borderTopStartRadius: 50,
+          alignItems: "center",
+          marginTop: "5%",
+        }}
+      >
+        <View>
+          <Text style={styles.title}>Juegos</Text>
         </View>
-      </ScrollView>
+
+        <GameRecomended />
+
+        <View style={styles.containerGames}>
+          <GameCard redirect={"/Juego1"} text={"Yo Nunca Nunca"} />
+          <GameCard redirect={"/Juego2"} text={"¿Qué Preferís?"} />
+        </View>
+      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   containerGames: {
-    height: "100%",
+    height: "40%",
     justifyContent: "space-around",
     flexWrap: "wrap",
     flexDirection: "row",
+    marginTop: "10%",
   },
-  containerRecomended: { height: "40%" },
+
   title: {
     color: "#FBFCF8",
     fontSize: 24,
     marginTop: 20,
+    marginBottom: "5%",
   },
 });
 

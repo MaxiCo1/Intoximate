@@ -41,9 +41,9 @@ const styles = StyleSheet.create({
   buttonText: {
     color: "#FBFCF8",
     //fontFamily: "Roboto-Regular",
-    fontSize: 16,
+    fontSize: 14,
     textAlign: "center",
-    margin: 14,
+    margin: 12,
     backgroundColor: "transparent",
   },
   Container: {
