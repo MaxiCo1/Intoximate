@@ -73,9 +73,7 @@ const HomeDrinks = () => {
 
         <Search />
 
-        <View style={styles.containerRecomended}>
-          <RecomendedSlider data={RecomendedData[0]} />
-        </View>
+        <RecomendedSlider data={RecomendedData[0]} />
 
         <FlatList
           data={InitialData}
@@ -99,9 +97,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
     display: "flex",
     justifyContent: "space-around",
+    marginTop: "5%",
   },
   item: { width: 100, height: 200, margin: 40, marginTop: 0 },
-  containerRecomended: { marginBottom: "10%" },
+
   title: {
     color: "#FBFCF8",
     fontSize: 24,

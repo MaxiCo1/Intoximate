@@ -32,6 +32,7 @@ const Search = () => {
           backgroundColor: "#494163",
           color: "#EBEBF5",
         }}
+        inputStyle={{ color: "#EBEBF5" }}
         onChangeText={updateSearch}
         onSubmitEditing={pageChange}
         value={search}

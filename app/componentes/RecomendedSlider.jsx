@@ -38,7 +38,7 @@ const RecomendedSlider = ({ data }) => {
   );
 };
 const styles = StyleSheet.create({
-  container: { width: 350, height: 200 },
+  container: { width: 350, height: 200, borderRadius: 20, overflow: "hidden" },
   text: { color: "#FBFCF8", fontSize: 18 },
   image: {
     flex: 1,
