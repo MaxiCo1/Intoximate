@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, FlatList } from "react-native";
 import { SearchBar } from "@rneui/themed";
 import { useLocalSearchParams } from "expo-router";
 import BackButton from "./componentes/BackButton";
@@ -80,40 +80,39 @@ const SearchResults = () => {
           inputContainerStyle={{
             borderRadius: 22,
             backgroundColor: "#494163",
-            color: "#EBEBF5",
+
+            marginBottom: "5%",
           }}
+          inputStyle={{ color: "#EBEBF5" }}
           onChangeText={updateSearch}
           onSubmitEditing={getNewData}
           value={search}
         />
         <RandomButton />
-        <View style={styles.containerDrinks}>
-          {
-            /*SearchData.map((drink, index) => (
-            <CardDrinks key={index} drink={drink} />
-          ))*/
-            search != ""
-              ? NewSearchData.map((drink, index) => (
-                  <CardDrinks key={index} drink={drink} />
-                ))
-              : SearchData.map((drink, index) => (
-                  <CardDrinks key={index} drink={drink} />
-                ))
-          }
-        </View>
+        <FlatList
+          data={search != "" ? NewSearchData : SearchData}
+          keyExtractor={(item, index) => index.toString()}
+          renderItem={({ item }) => (
+            <View style={styles.item}>
+              <CardDrinks drink={item} />
+            </View>
+          )}
+          numColumns={2}
+          key={2}
+          contentContainerStyle={styles.containerDrinks}
+        />
       </View>
     </View>
   );
 };
 const styles = StyleSheet.create({
   containerDrinks: {
-    margin: "5%",
-    height: "50%",
+    alignItems: "center",
+    display: "flex",
     justifyContent: "space-around",
-    flexWrap: "wrap",
-    flexDirection: "row",
+    marginTop: "10%",
   },
-  containerRecomended: { height: "40%" },
+  item: { width: 100, height: 200, margin: 40, marginTop: 0 },
   title: {
     color: "#FBFCF8",
     fontSize: 24,

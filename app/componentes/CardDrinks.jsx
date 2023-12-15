@@ -21,8 +21,6 @@ const CardDrinks = ({ drink }) => {
 
 const styles = StyleSheet.create({
   Container: {
-    height: "40%",
-    width: "35%",
     textAlign: "center",
   },
   buttonText: {

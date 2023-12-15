@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, FlatList } from "react-native";
 import { useLocalSearchParams } from "expo-router";
 import { LinearGradient } from "expo-linear-gradient";
 import BackButton from "./componentes/BackButton";
@@ -87,45 +87,76 @@ const SingleCocktail = () => {
       strIngredient15,
     ];
     arrClean = arr.filter((value) => value !== null);
-    console.log(arrClean);
   }
-  console.log(arrClean);
+  let ingredientIndex = 1;
+  let instructionIndex = 1;
+  const renderListItem = ({ item, index }) => {
+    if (item === "Ingredientes:") {
+      ingredientIndex = 1; // Reinicia el contador de ingredientes
+      return <Text style={styles.titulo}>{item}</Text>;
+    } else if (item === "Instrucciones:") {
+      instructionIndex = 1; // Reinicia el contador de instrucciones
+      return <Text style={styles.titulo}>{item}</Text>;
+    } else if (typeof item === "string") {
+      if (ingredientIndex <= arrClean.length) {
+        return (
+          <Text
+            style={[styles.texto, styles.container]}
+          >{`${ingredientIndex++}. ${item}`}</Text>
+        ); // Usa y luego incrementa ingredientIndex
+      } else {
+        return (
+          <Text
+            style={[styles.texto, styles.container]}
+          >{`${instructionIndex++}. ${item}`}</Text>
+        ); // Usa y luego incrementa instructionIndex
+      }
+    } else if (item.type === "image") {
+      return (
+        <View style={styles.imgContainer}>
+          <LinearGradient
+            colors={["#714FA1", "#79D9D4", "#EC5B75", "#79D9D4", "#714FA1"]}
+            start={{ x: 0, y: 0 }}
+            end={{ x: 1, y: 1 }}
+            locations={[0, 0.25, 0.5, 0.75, 1]} // Ajusta las ubicaciones para lograr el efecto deseado
+            style={[styles.linearGradient, styles.glow]}
+          >
+            <View style={[styles.innerContainer]}>
+              <Image style={[styles.image]} source={item.source} />
+            </View>
+          </LinearGradient>
+        </View>
+      );
+    }
+  };
+
   if (arrClean != null) {
+    // Combina todos los elementos en un solo array
+    const combinedData = [
+      { type: "image", source: strDrinkThumb },
+      "Ingredientes:",
+      ...arrClean,
+      "Instrucciones:",
+      ...strInstructions.split("."),
+    ];
+
     return (
-      
       <View
-        style={{ backgroundColor: "#212121", width: "100%", height: "100%" }}
+        style={{
+          backgroundColor: "#212121",
+          width: "100%",
+          height: "100%",
+        }}
       >
         <BackButton />
         <View style={styles.containerViolet}>
           <Text style={styles.tituloSeccion}>{strDrink}</Text>
-          <View style={styles.imgContainer}>
-            <LinearGradient
-              colors={["#714FA1", "#79D9D4", "#EC5B75", "#79D9D4", "#714FA1"]}
-              start={{ x: 0, y: 0 }}
-              end={{ x: 1, y: 1 }}
-              locations={[0, 0.25, 0.5, 0.75, 1]} // Ajusta las ubicaciones para lograr el efecto deseado
-              style={[styles.linearGradient, styles.glow]}
-            >
-              <View style={[styles.innerContainer]}>
-                <Image style={[styles.image]} source={strDrinkThumb} />
-              </View>
-            </LinearGradient>
-          </View>
-          <View style={styles.container}>
-            <Text style={styles.titulo}>Ingredientes</Text>
-            {arrClean.map((inst, index) => {
-              return (
-                <Text style={styles.texto} key={index}>
-                  {inst}
-                </Text>
-              );
-            })}
-          </View>
-          <View style={styles.container}>
-            <Text style={styles.titulo}>Instrucciones</Text>
-            <Text style={styles.texto}>{strInstructions}</Text>
-          </View>
+          <FlatList
+            data={combinedData}
+            keyExtractor={(item, index) => index.toString()}
+            renderItem={renderListItem}
+            contentContainerStyle={styles.renderContainer}
+          />
         </View>
       </View>
     );
@@ -140,10 +171,7 @@ const styles = StyleSheet.create({
   },
   innerContainer: {
     borderRadius: 25,
-    flex: 1,
     margin: 3, // <-- Border Width
-    backgroundColor: "#212121",
-    justifyContent: "center",
   },
 
   titulo: {
@@ -155,36 +183,40 @@ const styles = StyleSheet.create({
     fontSize: 24,
     color: "#EBEBF5",
     textAlign: "center",
+    marginBottom: "5%",
   },
   texto: {
     fontSize: 14,
     color: "#EBEBF5",
     textAlign: "center",
   },
-  image: { width: "100%", height: "100%", borderRadius: 25 },
+  image: { width: "100%", height: 249, borderRadius: 25 },
   imgContainer: {
     width: "80%",
     backgroundColor: "#212121",
-    height: "40%",
+    height: 300,
     alignItems: "center",
     display: "flex",
     justifyContent: "center",
     borderRadius: 25,
+    marginLeft: 40,
+    marginBottom: 20,
   },
   container: {
-    width: "90%",
-    alignItems: "left",
+    display: "flex",
+    justifyContent: "flex-start",
+    textAlign: "left",
+    marginLeft: "5%",
   },
   containerViolet: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "space-around",
     backgroundColor: "#3B3059",
-    height: "95%",
     marginTop: "10%",
     borderTopEndRadius: 50,
     borderTopStartRadius: 50,
-    alignItems: "center",
+    alignContent: "center",
+  },
+  renderContainer: {
+    height: "100%",
   },
 });
 

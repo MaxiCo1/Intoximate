@@ -1,12 +1,13 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, FlatList } from "react-native";
 
 import { Link } from "expo-router";
 import Search from "./componentes/SearchBar.jsx";
 import CardDrinks from "./componentes/CardDrinks.jsx";
 import Recomended from "./componentes/RecomendedSlider.jsx";
 import BackButton from "./componentes/BackButton.jsx";
+import RecomendedSlider from "./componentes/RecomendedSlider.jsx";
 
 const url = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=";
 
@@ -60,7 +61,7 @@ const HomeDrinks = () => {
         style={{
           backgroundColor: "#3B3059",
           height: "95%",
-          marginTop: "10%",
+          marginTop: "5%",
           borderTopEndRadius: 50,
           borderTopStartRadius: 50,
           alignItems: "center",
@@ -72,12 +73,22 @@ const HomeDrinks = () => {
 
         <Search />
 
-        <View style={styles.containerRecomended}></View>
-        <View style={styles.containerDrinks}>
-          {InitialData.map((drink, index) => {
-            return <CardDrinks key={index} drink={drink} />;
-          })}
+        <View style={styles.containerRecomended}>
+          <RecomendedSlider data={RecomendedData[0]} />
         </View>
+
+        <FlatList
+          data={InitialData}
+          keyExtractor={(item, index) => index.toString()}
+          renderItem={({ item }) => (
+            <View style={styles.item}>
+              <CardDrinks drink={item} />
+            </View>
+          )}
+          numColumns={2}
+          key={2}
+          contentContainerStyle={styles.containerDrinks}
+        />
       </View>
     </View>
   );
@@ -85,13 +96,12 @@ const HomeDrinks = () => {
 
 const styles = StyleSheet.create({
   containerDrinks: {
-    margin: "5%",
-    height: "50%",
+    alignItems: "center",
+    display: "flex",
     justifyContent: "space-around",
-    flexWrap: "wrap",
-    flexDirection: "row",
   },
-  containerRecomended: { height: "40%" },
+  item: { width: 100, height: 200, margin: 40, marginTop: 0 },
+  containerRecomended: { marginBottom: "10%" },
   title: {
     color: "#FBFCF8",
     fontSize: 24,
